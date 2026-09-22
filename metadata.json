@@ -1,0 +1,6 @@
+{
+  "name": "DNS Privado Tile",
+  "description": "Alternador de DNS Privado para o painel de Configurações Rápidas (Quick Settings Tile)",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

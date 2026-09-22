@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DNS Privado Tile</string>
+    <string name="tile_name">DNS Privado</string>
+    <string name="tile_subtitle_on">Ativado</string>
+    <string name="tile_subtitle_off">Desativado</string>
+    <string name="tile_subtitle_no_perm">Requer ADB</string>
+</resources>

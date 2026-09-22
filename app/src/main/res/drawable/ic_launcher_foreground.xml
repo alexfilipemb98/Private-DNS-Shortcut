@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <group
+        android:pivotX="54"
+        android:pivotY="54">
+        <!-- Shield Background Glow / Fill -->
+        <path
+            android:pathData="M54,26L32,36v16c0,14.6 9.4,28.2 22,32 12.6,-3.8 22,-17.4 22,-32V36L54,26z">
+            <aapt:attr name="android:fillColor">
+                <gradient
+                    android:startX="32"
+                    android:startY="26"
+                    android:endX="76"
+                    android:endY="84"
+                    android:type="linear">
+                    <item android:offset="0.0" android:color="#00F5D4" />
+                    <item android:offset="0.5" android:color="#00BBF9" />
+                    <item android:offset="1.0" android:color="#4361EE" />
+                </gradient>
+            </aapt:attr>
+        </path>
+        <!-- Shield Inner Outline -->
+        <path
+            android:fillColor="#151E33"
+            android:pathData="M54,30.5L36,38.7v13.3c0,12 7.7,23.2 18,26.5 10.3,-3.3 18,-14.5 18,-26.5V38.7L54,30.5z" />
+        <!-- DNS / Network Nodes inside shield -->
+        <path
+            android:pathData="M54,42L43,53h7v13h8V53h7L54,42z"
+            android:fillColor="#00F5D4" />
+        <!-- Top accent dot -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M54,37m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0" />
+    </group>
+</vector>

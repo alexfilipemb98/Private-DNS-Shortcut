@@ -1,0 +1,14 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Outer Shield -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M12,1L3,5v6c0,5.55 3.84,10.74 9,12 5.16,-1.26 9,-6.45 9,-12V5l-9,-4zm0,2.18l7,3.12v4.7c0,4.52 -3.02,8.74 -7,9.9 -3.98,-1.16 -7,-5.38 -7,-9.9V6.3l7,-3.12z" />
+    <!-- Network Globe / DNS Nodes in center -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M12,6.5c-2.48,0 -4.5,2.02 -4.5,4.5 0,1.38 0.63,2.61 1.61,3.44l-1.32,1.32c-0.29,0.29 -0.29,0.77 0,1.06 0.29,0.29 0.77,0.29 1.06,0l1.32,-1.32c0.55,0.32 1.18,0.5 1.83,0.5 2.48,0 4.5,-2.02 4.5,-4.5S14.48,6.5 12,6.5zm0,2c1.38,0 2.5,1.12 2.5,2.5s-1.12,2.5 -2.5,2.5 -2.5,-1.12 -2.5,-2.5 1.12,-2.5 2.5,-2.5z" />
+</vector>
