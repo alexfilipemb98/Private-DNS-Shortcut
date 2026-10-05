@@ -17,10 +17,4 @@ local.properties
 .env
 debug.keystore
 app/release/app-release.apk
-/.idea
-/.idea
-/.idea
-.idea/misc.xml
-.idea/misc.xml
-/app
-.idea/misc.xml
+

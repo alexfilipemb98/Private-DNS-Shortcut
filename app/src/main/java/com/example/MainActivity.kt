@@ -77,6 +77,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -120,7 +121,7 @@ class MainActivity : ComponentActivity() {
                                 DnsHelper.turnOn(this, newHostname)
                             }
                             refreshDnsState()
-                            Toast.makeText(this, "Endereço DNS salvo!", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, getString(R.string.msg_dns_saved), Toast.LENGTH_SHORT).show()
                         },
                         onCopyAdbCommand = {
                             copyToClipboard(DnsHelper.getAdbCommand(this))
@@ -167,7 +168,7 @@ class MainActivity : ComponentActivity() {
         if (!dnsState.value.hasPermission) {
             Toast.makeText(
                 this,
-                "Execute o comando ADB primeiro para permitir a alteração do DNS.",
+                getString(R.string.msg_adb_required),
                 Toast.LENGTH_LONG
             ).show()
             return
@@ -175,7 +176,7 @@ class MainActivity : ComponentActivity() {
 
         val success = DnsHelper.toggle(this)
         if (!success) {
-            Toast.makeText(this, "Falha ao alterar estado do DNS.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_dns_change_failed), Toast.LENGTH_SHORT).show()
         }
         refreshDnsState()
     }
@@ -215,9 +216,9 @@ class MainActivity : ComponentActivity() {
 
     private fun copyToClipboard(text: String) {
         val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        val clip = ClipData.newPlainText("Comando ADB", text)
+        val clip = ClipData.newPlainText(getString(R.string.label_adb_command), text)
         clipboard.setPrimaryClip(clip)
-        Toast.makeText(this, "Comando ADB copiado para a área de transferência!", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getString(R.string.msg_adb_copied), Toast.LENGTH_SHORT).show()
     }
 
     private fun openNetworkSettings() {
@@ -229,7 +230,7 @@ class MainActivity : ComponentActivity() {
                 val intent = Intent(Settings.ACTION_SETTINGS)
                 startActivity(intent)
             } catch (_: Exception) {
-                Toast.makeText(this, "Não foi possível abrir as definições.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.msg_settings_open_failed), Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -265,12 +266,12 @@ fun DnsTopAppBar(
                 Spacer(modifier = Modifier.width(10.dp))
                 Column {
                     Text(
-                        text = "DNS Privado Tile",
+                        text = stringResource(R.string.app_name),
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold
                     )
                     Text(
-                        text = if (hasPermission) "Quick Settings Tile Pronto" else "Permissão ADB Necessária",
+                        text = if (hasPermission) stringResource(R.string.top_bar_tile_ready) else stringResource(R.string.top_bar_adb_required),
                         style = MaterialTheme.typography.labelSmall,
                         color = if (hasPermission) Color(0xFF2E7D32) else MaterialTheme.colorScheme.error
                     )
@@ -284,7 +285,7 @@ fun DnsTopAppBar(
             ) {
                 Icon(
                     imageVector = Icons.Default.Refresh,
-                    contentDescription = "Atualizar estado"
+                    contentDescription = stringResource(R.string.cd_refresh_state)
                 )
             }
         },
@@ -347,7 +348,7 @@ fun DnsMainScreen(
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                        text = "Endereço do DNS Privado",
+                        text = stringResource(R.string.title_dns_address),
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.SemiBold
                     )
@@ -355,7 +356,7 @@ fun DnsMainScreen(
 
                 Spacer(modifier = Modifier.height(6.dp))
                 Text(
-                    text = "Endereço do servidor DoT (hostname). Ao ativar pelo botão, este endereço será aplicado.",
+                    text = stringResource(R.string.desc_dns_address),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -365,8 +366,8 @@ fun DnsMainScreen(
                 OutlinedTextField(
                     value = hostnameInput,
                     onValueChange = { hostnameInput = it },
-                    label = { Text("Hostname do Servidor DNS") },
-                    placeholder = { Text("ex: dns.adguard.com") },
+                    label = { Text(stringResource(R.string.label_hostname)) },
+                    placeholder = { Text(stringResource(R.string.placeholder_hostname)) },
                     singleLine = true,
                     modifier = Modifier
                         .fillMaxWidth()
@@ -379,7 +380,7 @@ fun DnsMainScreen(
                             ) {
                                 Icon(
                                     imageVector = Icons.Default.Check,
-                                    contentDescription = "Salvar endereço",
+                                    contentDescription = stringResource(R.string.cd_save_address),
                                     tint = MaterialTheme.colorScheme.primary
                                 )
                             }
@@ -390,7 +391,7 @@ fun DnsMainScreen(
                 Spacer(modifier = Modifier.height(10.dp))
 
                 Text(
-                    text = "Predefinições populares:",
+                    text = stringResource(R.string.title_popular_presets),
                     style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -402,10 +403,10 @@ fun DnsMainScreen(
                     verticalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
                     val presets = listOf(
-                        "dns.adguard.com" to "AdGuard Padrão",
-                        "family.adguard-dns.com" to "AdGuard Família",
-                        "one.one.one.one" to "Cloudflare 1.1.1.1",
-                        "dns.quad9.net" to "Quad9 Seguro"
+                        "dns.adguard.com" to stringResource(R.string.preset_adguard_default),
+                        "family.adguard-dns.com" to stringResource(R.string.preset_adguard_family),
+                        "one.one.one.one" to stringResource(R.string.preset_cloudflare),
+                        "dns.quad9.net" to stringResource(R.string.preset_quad9)
                     )
 
                     presets.forEach { (presetHost, presetLabel) ->
@@ -436,7 +437,7 @@ fun DnsMainScreen(
                         modifier = Modifier.size(18.dp)
                     )
                     Spacer(modifier = Modifier.width(8.dp))
-                    Text("Salvar e Aplicar Endereço")
+                    Text(stringResource(R.string.btn_save_apply))
                 }
             }
         }
@@ -457,7 +458,7 @@ fun DnsMainScreen(
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                        text = "Como Adicionar o Botão ao Painel",
+                        text = stringResource(R.string.title_how_to_add),
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.SemiBold
                     )
@@ -467,26 +468,26 @@ fun DnsMainScreen(
 
                 TileStepItem(
                     stepNumber = "1",
-                    title = "Abre as Configurações Rápidas",
-                    description = "Desliza duas vezes para baixo a partir do topo do ecrã para abrir o painel completo de botões."
+                    title = stringResource(R.string.step1_title),
+                    description = stringResource(R.string.step1_desc)
                 )
 
                 TileStepItem(
                     stepNumber = "2",
-                    title = "Toca no botão de Editar (Lápis)",
-                    description = "Clica no ícone de lápis para editar e reorganizar os mosaicos do sistema."
+                    title = stringResource(R.string.step2_title),
+                    description = stringResource(R.string.step2_desc)
                 )
 
                 TileStepItem(
                     stepNumber = "3",
-                    title = "Arrasta o botão \"DNS Privado\"",
-                    description = "Procura o botão \"DNS Privado\" na secção inferior e arrasta-o para os teus botões principais."
+                    title = stringResource(R.string.step3_title),
+                    description = stringResource(R.string.step3_desc)
                 )
 
                 TileStepItem(
                     stepNumber = "4",
-                    title = "Alterna com 1 Toque!",
-                    description = "Toca no botão a qualquer momento para ligar ou desligar o DNS com total rapidez."
+                    title = stringResource(R.string.step4_title),
+                    description = stringResource(R.string.step4_desc)
                 )
             }
         }
@@ -505,7 +506,7 @@ fun DnsMainScreen(
                 modifier = Modifier.size(18.dp)
             )
             Spacer(modifier = Modifier.width(8.dp))
-            Text("Abrir Definições de Rede do Android")
+            Text(stringResource(R.string.btn_open_network_settings))
         }
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -566,15 +567,15 @@ fun StatusHeroCard(
 
                     Column {
                         Text(
-                            text = "DNS Privado",
+                            text = stringResource(R.string.tile_name),
                             style = MaterialTheme.typography.titleMedium,
                             fontWeight = FontWeight.Bold
                         )
                         Text(
                             text = when {
-                                isActive -> "Ativado (Hostname)"
-                                state.isOpportunistic -> "Automático"
-                                else -> "Desativado"
+                                isActive -> stringResource(R.string.status_active_hostname)
+                                state.isOpportunistic -> stringResource(R.string.status_automatic)
+                                else -> stringResource(R.string.status_disabled)
                             },
                             style = MaterialTheme.typography.bodyMedium,
                             color = if (isActive) MaterialTheme.colorScheme.primary
@@ -610,12 +611,12 @@ fun StatusHeroCard(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
-                    text = "Servidor em uso:",
+                    text = stringResource(R.string.label_server_in_use),
                     style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
                 Text(
-                    text = if (isActive) (state.specifier ?: state.configuredHostname) else "Nenhum (Inativo)",
+                    text = if (isActive) (state.specifier ?: state.configuredHostname) else stringResource(R.string.status_none_inactive),
                     style = MaterialTheme.typography.labelMedium,
                     fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colorScheme.onSurface
@@ -653,13 +654,13 @@ fun AdbPermissionCard(
                 Spacer(modifier = Modifier.width(12.dp))
                 Column {
                     Text(
-                        text = "Permissão WRITE_SECURE_SETTINGS Ativa",
+                        text = stringResource(R.string.perm_active_title),
                         style = MaterialTheme.typography.titleSmall,
                         fontWeight = FontWeight.Bold,
                         color = Color(0xFF1B5E20)
                     )
                     Text(
-                        text = "A aplicação e o botão Quick Settings têm permissão para alternar o DNS Privado diretamente.",
+                        text = stringResource(R.string.perm_active_desc),
                         style = MaterialTheme.typography.bodySmall,
                         color = Color(0xFF2E7D32)
                     )
@@ -685,7 +686,7 @@ fun AdbPermissionCard(
                     )
                     Spacer(modifier = Modifier.width(10.dp))
                     Text(
-                        text = "Ação Necessária: Ativação via ADB",
+                        text = stringResource(R.string.perm_required_title),
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.error
@@ -695,7 +696,7 @@ fun AdbPermissionCard(
                 Spacer(modifier = Modifier.height(8.dp))
 
                 Text(
-                    text = "O Android exige a permissão especial WRITE_SECURE_SETTINGS para apps sem root alterarem o DNS do sistema. Esta concessão é feita uma única vez através do computador com o comando ADB:",
+                    text = stringResource(R.string.perm_required_desc),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -741,7 +742,7 @@ fun AdbPermissionCard(
                             modifier = Modifier.size(16.dp)
                         )
                         Spacer(modifier = Modifier.width(6.dp))
-                        Text("Copiar Comando")
+                        Text(stringResource(R.string.btn_copy_command))
                     }
 
                     OutlinedButton(
@@ -756,7 +757,7 @@ fun AdbPermissionCard(
                             modifier = Modifier.size(16.dp)
                         )
                         Spacer(modifier = Modifier.width(6.dp))
-                        Text("Verificar")
+                        Text(stringResource(R.string.btn_verify))
                     }
                 }
             }

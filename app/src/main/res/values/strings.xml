@@ -1,7 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">DNS Privado Tile</string>
     <string name="tile_name">DNS Privado</string>
     <string name="tile_subtitle_on">Ativado</string>
     <string name="tile_subtitle_off">Desativado</string>
     <string name="tile_subtitle_no_perm">Requer ADB</string>
+
+    <string name="msg_dns_saved">Endereço DNS salvo!</string>
+    <string name="msg_adb_required">Execute o comando ADB primeiro para permitir a alteração do DNS.</string>
+    <string name="msg_dns_change_failed">Falha ao alterar estado do DNS.</string>
+    <string name="msg_adb_copied">Comando ADB copiado para a área de transferência!</string>
+    <string name="msg_settings_open_failed">Não foi possível abrir as definições.</string>
+
+    <string name="top_bar_tile_ready">Quick Settings Tile Pronto</string>
+    <string name="top_bar_adb_required">Permissão ADB Necessária</string>
+    <string name="cd_refresh_state">Atualizar estado</string>
+
+    <string name="title_dns_address">Endereço do DNS Privado</string>
+    <string name="desc_dns_address">Endereço do servidor DoT (hostname). Ao ativar pelo botão, este endereço será aplicado.</string>
+    <string name="label_hostname">Hostname do Servidor DNS</string>
+    <string name="placeholder_hostname">ex: dns.adguard.com</string>
+    <string name="cd_save_address">Salvar endereço</string>
+    <string name="title_popular_presets">Predefinições populares:</string>
+    <string name="preset_adguard_default">AdGuard Padrão</string>
+    <string name="preset_adguard_family">AdGuard Família</string>
+    <string name="preset_cloudflare">Cloudflare 1.1.1.1</string>
+    <string name="preset_quad9">Quad9 Seguro</string>
+    <string name="btn_save_apply">Salvar e Aplicar Endereço</string>
+
+    <string name="title_how_to_add">Como Adicionar o Botão ao Painel</string>
+    <string name="step1_title">Abre as Configurações Rápidas</string>
+    <string name="step1_desc">Desliza duas vezes para baixo a partir do topo do ecrã para abrir o painel completo de botões.</string>
+    <string name="step2_title">Toca no botão de Editar (Lápis)</string>
+    <string name="step2_desc">Clica no ícone de lápis para editar e reorganizar os mosaicos do sistema.</string>
+    <string name="step3_title">Arrasta o botão \"DNS Privado\"</string>
+    <string name="step3_desc">Procura o botão \"DNS Privado\" na secção inferior e arrasta-o para os teus botões principais.</string>
+    <string name="step4_title">Alterna com 1 Toque!</string>
+    <string name="step4_desc">Toca no botão a qualquer momento para ligar ou desligar o DNS com total rapidez.</string>
+    <string name="btn_open_network_settings">Abrir Definições de Rede do Android</string>
+
+    <string name="status_active_hostname">Ativado (Hostname)</string>
+    <string name="status_automatic">Automático</string>
+    <string name="status_disabled">Desativado</string>
+    <string name="label_server_in_use">Servidor em uso:</string>
+    <string name="status_none_inactive">Nenhum (Inativo)</string>
+
+    <string name="perm_active_title">Permissão WRITE_SECURE_SETTINGS Ativa</string>
+    <string name="perm_active_desc">A aplicação e o botão Quick Settings têm permissão para alternar o DNS Privado diretamente.</string>
+    <string name="perm_required_title">Ação Necessária: Ativação via ADB</string>
+    <string name="perm_required_desc">O Android exige a permissão especial WRITE_SECURE_SETTINGS para apps sem root alterarem o DNS do sistema. Esta concessão é feita uma única vez através do computador com o comando ADB:</string>
+
+    <string name="btn_copy_command">Copiar Comando</string>
+    <string name="btn_verify">Verificar</string>
+    <string name="label_adb_command">Comando ADB</string>
 </resources>

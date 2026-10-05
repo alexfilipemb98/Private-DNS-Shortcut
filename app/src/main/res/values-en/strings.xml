@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Private DNS Tile</string>
+    <string name="tile_name">Private DNS</string>
+    <string name="tile_subtitle_on">Enabled</string>
+    <string name="tile_subtitle_off">Disabled</string>
+    <string name="tile_subtitle_no_perm">ADB Required</string>
+
+    <string name="msg_dns_saved">DNS address saved!</string>
+    <string name="msg_adb_required">Run the ADB command first to allow DNS modification.</string>
+    <string name="msg_dns_change_failed">Failed to change DNS state.</string>
+    <string name="msg_adb_copied">ADB command copied to clipboard!</string>
+    <string name="msg_settings_open_failed">Could not open settings.</string>
+
+    <string name="top_bar_tile_ready">Quick Settings Tile Ready</string>
+    <string name="top_bar_adb_required">ADB Permission Required</string>
+    <string name="cd_refresh_state">Refresh state</string>
+
+    <string name="title_dns_address">Private DNS Address</string>
+    <string name="desc_dns_address">DoT server address (hostname). When activated via the button, this address will be applied.</string>
+    <string name="label_hostname">DNS Server Hostname</string>
+    <string name="placeholder_hostname">e.g. dns.adguard.com</string>
+    <string name="cd_save_address">Save address</string>
+    <string name="title_popular_presets">Popular presets:</string>
+    <string name="preset_adguard_default">AdGuard Default</string>
+    <string name="preset_adguard_family">AdGuard Family</string>
+    <string name="preset_cloudflare">Cloudflare 1.1.1.1</string>
+    <string name="preset_quad9">Quad9 Secure</string>
+    <string name="btn_save_apply">Save and Apply Address</string>
+
+    <string name="title_how_to_add">How to Add the Tile to the Panel</string>
+    <string name="step1_title">Open Quick Settings</string>
+    <string name="step1_desc">Swipe down twice from the top of the screen to open the full quick settings panel.</string>
+    <string name="step2_title">Tap the Edit button (Pencil)</string>
+    <string name="step2_desc">Tap the pencil icon to edit and rearrange system tiles.</string>
+    <string name="step3_title">Drag the \"Private DNS\" tile</string>
+    <string name="step3_desc">Look for the \"Private DNS\" tile in the bottom section and drag it to your main tiles.</string>
+    <string name="step4_title">Toggle with 1 Tap!</string>
+    <string name="step4_desc">Tap the tile anytime to quickly turn the DNS on or off.</string>
+    <string name="btn_open_network_settings">Open Android Network Settings</string>
+
+    <string name="status_active_hostname">Activated (Hostname)</string>
+    <string name="status_automatic">Automatic</string>
+    <string name="status_disabled">Disabled</string>
+    <string name="label_server_in_use">Server in use:</string>
+    <string name="status_none_inactive">None (Inactive)</string>
+
+    <string name="perm_active_title">WRITE_SECURE_SETTINGS Permission Active</string>
+    <string name="perm_active_desc">The app and the Quick Settings tile have permission to toggle Private DNS directly.</string>
+    <string name="perm_required_title">Action Required: Activation via ADB</string>
+    <string name="perm_required_desc">Android requires the special WRITE_SECURE_SETTINGS permission for non-root apps to change the system DNS. This one-time grant is done via a computer using the ADB command:</string>
+
+    <string name="btn_copy_command">Copy Command</string>
+    <string name="btn_verify">Verify</string>
+    <string name="label_adb_command">ADB Command</string>
+</resources>
