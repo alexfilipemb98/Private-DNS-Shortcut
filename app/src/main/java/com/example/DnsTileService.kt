@@ -1,5 +1,6 @@
 package com.example
 
+import android.annotation.SuppressLint
 import android.app.PendingIntent
 import android.content.Intent
 import android.database.ContentObserver
@@ -169,6 +170,7 @@ class DnsTileService : TileService() {
     /**
      * Collapses notification shade and opens MainActivity with setup guidance.
      */
+    @SuppressLint("StartActivityAndCollapseDeprecated")
     private fun openMainActivity() {
         val intent = Intent(this, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
